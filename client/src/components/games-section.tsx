@@ -94,14 +94,18 @@ const GamesSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <motion.a 
-            href="#" 
+          <a
+            href="/games"
             className="btn-glow inline-block orbitron bg-card border border-primary text-primary hover:bg-primary/10 px-8 py-3 rounded-lg font-semibold"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
           >
-            View All Games <i className="fas fa-arrow-right ml-2"></i>
-          </motion.a>
+            <motion.span
+              className="inline-block"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              View All Games <i className="fas fa-arrow-right ml-2"></i>
+            </motion.span>
+          </a>
         </motion.div>
       </div>
     </section>
