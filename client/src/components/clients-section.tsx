@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import ExtemLogo from '../assets/extem-logo';
 
 interface Partner {
   id: string;
@@ -12,7 +11,7 @@ const partners: Partner[] = [
   {
     id: '1',
     name: 'Extem Education',
-    logo: <ExtemLogo className="h-24 w-auto mx-auto" />,
+    logo: <img src="/attached_assets/linkedin logo bgw.png" alt="Extem Education" className="h-16 w-auto mx-auto" />,
     isLogo: true
   }
 ];

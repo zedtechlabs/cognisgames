@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'wouter';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import GameCard, { Game } from '@/components/game-card';
@@ -368,15 +367,18 @@ const GamesPage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <Link href="/">
-              <motion.a 
-                className="btn-glow inline-block orbitron bg-card border border-primary text-primary hover:bg-primary/10 px-8 py-3 rounded-lg font-semibold"
+            <a 
+              href="/"
+              className="btn-glow inline-block orbitron bg-card border border-primary text-primary hover:bg-primary/10 px-8 py-3 rounded-lg font-semibold"
+            >
+              <motion.span
+                className="inline-block"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <i className="fas fa-arrow-left mr-2"></i> Back to Home
-              </motion.a>
-            </Link>
+              </motion.span>
+            </a>
           </motion.div>
         </div>
       </section>
