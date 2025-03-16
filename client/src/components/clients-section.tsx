@@ -12,16 +12,9 @@ const partners: Partner[] = [
   {
     id: '1',
     name: 'Extem Education',
-    logo: <ExtemLogo className="h-16 w-auto mx-auto filter brightness-110" />,
+    logo: <ExtemLogo className="h-24 w-auto mx-auto" />,
     isLogo: true
-  },
-  { id: '2', name: 'Global Learning' },
-  { id: '3', name: 'TechEdu Inc.' },
-  { id: '4', name: 'FutureLearn' },
-  { id: '5', name: 'EduVenture' },
-  { id: '6', name: 'Mindcraft Academy' },
-  { id: '7', name: 'Learn & Play' },
-  { id: '8', name: 'SkillSphere' }
+  }
 ];
 
 const ClientsSection = () => {
