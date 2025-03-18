@@ -34,13 +34,18 @@ function App() {
         <CustomCursor />
         <Router />
         
-        {/* ✅ Add ToastContainer for react-toastify */}
-        <ToastContainer position="top-right" autoClose={3000} />
+        {/* ✅ ToastContainer for react-toastify */}
+        <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
 
-        {/* Example Toast Button */}
-        <button onClick={() => toast.success("Toaster is working! 🎉")}>
-          Show Toast
-        </button>
+        {/* ✅ Example Toast Button (Remove this in production if not needed) */}
+        <div className="fixed bottom-4 right-4">
+          <button
+            onClick={() => toast.success("Toaster is working! 🎉")}
+            className="px-4 py-2 bg-blue-500 text-white rounded shadow-lg"
+          >
+            Show Toast
+          </button>
+        </div>
       </div>
     </QueryClientProvider>
   );
