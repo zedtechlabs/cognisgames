@@ -7,6 +7,8 @@ import Games from "@/pages/games";
 import NotFound from "@/pages/not-found";
 import { AnimatePresence } from "framer-motion";
 import CustomCursor from "@/components/ui/cursor";
+import AnimatedBackground from "@/components/animated-background";
+import Particles from "@/components/particles";
 
 function Router() {
   // Get current route for AnimatePresence
@@ -27,6 +29,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="app relative overflow-x-hidden">
+        <AnimatedBackground />
+        <Particles />
         <CustomCursor />
         <Router />
         <Toaster />
