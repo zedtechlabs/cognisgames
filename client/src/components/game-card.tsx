@@ -57,9 +57,16 @@ const GameCard = ({ game, index }: GameCardProps) => {
             className="btn-glow text-sm bg-primary hover:bg-primary/90 text-background px-4 py-2 rounded-lg font-medium"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => setShowWaitlist(true)}
           >
             Try Demo
           </motion.button>
+          
+          <WaitlistModal 
+            isOpen={showWaitlist}
+            onClose={() => setShowWaitlist(false)}
+            gameName={game.title}
+          />
         </div>
       </div>
     </motion.div>
