@@ -27,10 +27,12 @@ export default defineConfig(async () => {
     plugins,
     resolve: {
       alias: {
-        "@": path.resolve(__dirname, "client", "src"),
+        // Use an alias relative to the Vite root (which is the "client" folder)
+        "@": "/src",
         "@shared": path.resolve(__dirname, "shared"),
       },
     },
+    // Vite's working directory is the "client" folder
     root: path.resolve(__dirname, "client"),
     build: {
       outDir: path.resolve(__dirname, "client", "dist"),
