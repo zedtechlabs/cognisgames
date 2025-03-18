@@ -1,7 +1,8 @@
 import { Switch, Route, useLocation } from "wouter";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
-import { Toaster } from "@/components/ui/toaster";
+import { ToastContainer, toast } from "react-toastify";  // ✅ Using react-toastify
+import "react-toastify/dist/ReactToastify.css"; // ✅ Import default styles
 import Home from "@/pages/home";
 import Games from "@/pages/games";
 import NotFound from "@/pages/not-found";
@@ -11,7 +12,6 @@ import AnimatedBackground from "@/components/animated-background";
 import Particles from "@/components/particles";
 
 function Router() {
-  // Get current route for AnimatePresence
   const [location] = useLocation();
 
   return (
@@ -33,7 +33,14 @@ function App() {
         <Particles />
         <CustomCursor />
         <Router />
-        <Toaster />
+        
+        {/* ✅ Add ToastContainer for react-toastify */}
+        <ToastContainer position="top-right" autoClose={3000} />
+
+        {/* Example Toast Button */}
+        <button onClick={() => toast.success("Toaster is working! 🎉")}>
+          Show Toast
+        </button>
       </div>
     </QueryClientProvider>
   );
