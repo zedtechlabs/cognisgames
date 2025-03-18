@@ -15,7 +15,7 @@ export default defineConfig(async () => {
     themePlugin(),
   ];
 
-  // ✅ Only import cartographer in Replit, NEVER on Vercel
+  // Only import cartographer in Replit
   if (process.env.REPL_ID) {
     const cartographerModule = await import("@replit/vite-plugin-cartographer").catch(() => null);
     if (cartographerModule) {
@@ -27,15 +27,15 @@ export default defineConfig(async () => {
     plugins,
     resolve: {
       alias: {
-        // Use an alias relative to the Vite root (which is the "client" folder)
-        "@": "/src",
+        "@": path.resolve(__dirname, "client", "src"),
         "@shared": path.resolve(__dirname, "shared"),
       },
     },
-    // Vite's working directory is the "client" folder
+    // Keep the root as client
     root: path.resolve(__dirname, "client"),
     build: {
-      outDir: path.resolve(__dirname, "client", "dist"),
+      // Output the build to a "dist" folder in the project root
+      outDir: path.resolve(__dirname, "dist"),
       emptyOutDir: true,
     },
   };
