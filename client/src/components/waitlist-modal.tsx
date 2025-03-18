@@ -121,3 +121,122 @@ export const WaitlistModal = ({ isOpen, onClose, gameName }: WaitlistModalProps)
     </motion.div>
   );
 };
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+
+interface WaitlistModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  gameName: string;
+}
+
+const WaitlistModal = ({ isOpen, onClose, gameName }: WaitlistModalProps) => {
+  const [email, setEmail] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [ageGroup, setAgeGroup] = useState('');
+  const [interests, setInterests] = useState<string[]>([]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log({ email, fullName, ageGroup, interests, gameName });
+    onClose();
+  };
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          className="fixed inset-0 bg-background/95 z-50 flex items-center justify-center p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.div
+            className="bg-card border-2 border-primary rounded-xl p-8 w-full max-w-md"
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+          >
+            <h2 className="orbitron text-2xl font-bold text-white mb-6">Join the Waitlist</h2>
+            <p className="text-gray-400 mb-6">Be among the first to try {gameName} when it's ready.</p>
+            
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  className="w-full bg-background border border-primary/30 rounded-lg p-3 text-white"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  className="w-full bg-background border border-primary/30 rounded-lg p-3 text-white"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <select
+                  className="w-full bg-background border border-primary/30 rounded-lg p-3 text-white"
+                  value={ageGroup}
+                  onChange={(e) => setAgeGroup(e.target.value)}
+                  required
+                >
+                  <option value="">Select Age Group</option>
+                  <option value="0-12">0-12</option>
+                  <option value="13-17">13-17</option>
+                  <option value="18+">18+</option>
+                </select>
+              </div>
+              <div className="space-y-2">
+                <p className="text-sm text-gray-400">Interests</p>
+                <div className="flex flex-wrap gap-2">
+                  {['Mathematics', 'Science', 'Language', 'History'].map((interest) => (
+                    <label key={interest} className="flex items-center space-x-2">
+                      <input
+                        type="checkbox"
+                        value={interest}
+                        checked={interests.includes(interest)}
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            setInterests([...interests, interest]);
+                          } else {
+                            setInterests(interests.filter(i => i !== interest));
+                          }
+                        }}
+                        className="accent-primary"
+                      />
+                      <span className="text-white">{interest}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-primary text-background font-medium py-3 rounded-lg hover:bg-primary/90 transition-colors"
+              >
+                Join Waitlist
+              </button>
+            </form>
+            
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4 text-gray-400 hover:text-white"
+            >
+              <i className="fas fa-times"></i>
+            </button>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
+export default WaitlistModal;

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import WaitlistModal from './waitlist-modal';
 
 export interface Game {
   id: string;
