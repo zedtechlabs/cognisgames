@@ -15,10 +15,12 @@ export default defineConfig(async () => {
     themePlugin(),
   ];
 
-  // ✅ Only import cartographer in Replit environment
-  if (process.env.REPL_ID !== undefined) {
-    const { cartographer } = await import("@replit/vite-plugin-cartographer");
-    plugins.push(cartographer());
+  // ✅ Only import cartographer in Replit, NEVER on Vercel
+  if (process.env.REPL_ID) {
+    const cartographerModule = await import("@replit/vite-plugin-cartographer").catch(() => null);
+    if (cartographerModule) {
+      plugins.push(cartographerModule.cartographer());
+    }
   }
 
   return {
