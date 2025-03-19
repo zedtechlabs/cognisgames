@@ -9,6 +9,7 @@ import { AnimatePresence } from "framer-motion";
 import CustomCursor from "@/components/ui/cursor";
 import AnimatedBackground from "@/components/animated-background";
 import Particles from "@/components/particles";
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function Router() {
   // Get current route for AnimatePresence
@@ -34,6 +35,7 @@ function App() {
         <CustomCursor />
         <Router />
         <Toaster />
+        <SpeedInsights />
       </div>
     </QueryClientProvider>
   );
