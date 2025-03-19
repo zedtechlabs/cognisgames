@@ -25,7 +25,7 @@ const CognisLogo = () => {
           </span>
           <span className="text-white">GAMES</span>
         </h1>
-        <p className="text-xs text-gray-400">by Zed Tech Labs</p>
+        <p className="text-xs text-gray-400">by Zed Tech Lab</p>
       </div>
     </div>
   );
