@@ -43,7 +43,7 @@ const GameCard = ({ game, index }: GameCardProps) => {
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
       {(game.isNew || game.isPopular) && (
-        <div className={`absolute top-[-4px] right-[-5px] z-10 press-start text-xs ${badgeClass} px-3 py-1 rounded-full`}>
+        <div className={`absolute top-[-1px] right-[-5px] z-10 press-start text-xs ${badgeClass} px-3 py-1 rounded-full`}>
           {badgeText}
         </div>
       )}

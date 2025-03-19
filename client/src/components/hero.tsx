@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import educationalGaming from '../assets/CognisGames_Lounge.webp';
 
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -107,7 +108,7 @@ const Hero = () => {
             >
               <div className="relative z-10 hexagon bg-card p-1 border-2 border-primary/50 overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                  src={educationalGaming}
                   alt="Educational gaming" 
                   className="w-full h-auto rounded opacity-90 hover:opacity-100 transition-opacity"
                 />
