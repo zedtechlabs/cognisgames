@@ -1,14 +1,16 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import GameCard, { Game } from './game-card';
+import numberRushLogo from '../assets/number_rush_cognisgames.webp';
+
 
 const gamesData: Game[] = [
   {
     id: '1',
-    title: 'MathQuest',
-    description: 'A mathematical adventure where players solve equations to progress through an epic fantasy world.',
-    imageUrl: 'https://images.unsplash.com/photo-1600861194942-f883de0dfe96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    ageRange: 'Ages 10-14',
+    title: 'Number Rush',
+    description: 'Challenge your brain with a fast-paced number game',
+    imageUrl: numberRushLogo,  // Replacing Unsplash URL with local image
+    ageRange: 'Ages 7+',
     isNew: true
   },
   {
