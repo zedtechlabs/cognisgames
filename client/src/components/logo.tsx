@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import ZedLogo from '../assets/zed-logo';
+import logoTrans from '../assets/logo-trans.png';
 
 const CognisLogo = () => {
   return (
@@ -16,7 +16,7 @@ const CognisLogo = () => {
         }}
         className="h-10"
       >
-        <ZedLogo className="h-10" />
+        <img src={logoTrans} alt="Cognis Logo" className="h-10 w-auto" />
       </motion.div>
       <div>
         <h1 className="orbitron text-2xl font-bold">
