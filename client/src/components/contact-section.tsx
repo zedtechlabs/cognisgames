@@ -179,7 +179,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <p className="text-gray-300 font-medium">Email Us</p>
-                    <p className="text-primary">cognigames@zedtechlab.com</p>
+                    <p className="text-primary">cognisgames@zedtechlab.com</p>
                   </div>
                 </div>
                 
