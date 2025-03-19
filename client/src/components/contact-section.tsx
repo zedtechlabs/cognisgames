@@ -179,7 +179,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <p className="text-gray-300 font-medium">Email Us</p>
-                    <p className="text-primary">info@cognigames.com</p>
+                    <p className="text-primary">cognigames@zedtechlab.com</p>
                   </div>
                 </div>
                 
@@ -189,7 +189,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <p className="text-gray-300 font-medium">Call Us</p>
-                    <p className="text-primary">+1 (555) 123-4567</p>
+                    <p className="text-primary">+91 89202 63364</p>
                   </div>
                 </div>
                 
@@ -199,7 +199,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <p className="text-gray-300 font-medium">Visit Us</p>
-                    <p className="text-primary">123 Education Lane, Knowledge City</p>
+                    <p className="text-primary">IIT Delhi, Hauz Khas, New Delhi,India, 110016</p>
                   </div>
                 </div>
               </div>

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import DiscussCG from '../assets/discuss_cognisgames.webp';
 
 interface Service {
   id: string;
@@ -125,7 +126,7 @@ const ServicesSection = () => {
             
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                src= {DiscussCG} 
                 alt="Game development process" 
                 className="rounded-lg shadow-lg border border-primary/30"
               />

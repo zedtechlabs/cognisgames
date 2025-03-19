@@ -12,7 +12,7 @@ const gamesData: Game[] = [
   {
     id: '1',
     title: 'Number Rush',
-    description: 'Race against the clock to solve rapid-fire math challenges and sharpen your mental calculation skills. Test your speed, accuracy, and reflexes in a thrilling numbers showdown!',
+    description: 'Race against the clock to solve rapid-fire math challenges and sharpen your mental calculation skills.',
     imageUrl: numberRushLogo,  // Replacing Unsplash URL with local image
     ageRange: 'Ages 7+',
     isNew: true,

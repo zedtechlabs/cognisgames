@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import extemLogo from '../assets/extem_logo.png';
 
 interface Partner {
   id: string;
@@ -11,7 +12,7 @@ const partners: Partner[] = [
   {
     id: '1',
     name: 'Extem Education',
-    logo: <img src="/attached_assets/linkedin logo bgw.png" alt="Extem Education" className="h-16 w-auto mx-auto" />,
+    logo: <img src= {extemLogo} alt="Extem Education" className="h-16 w-auto mx-auto" />,
     isLogo: true
   }
 ];
@@ -35,7 +36,7 @@ const ClientsSection = () => {
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center justify-items-center">
+        <div className="flex justify-center items-center">
           {partners.map((partner, index) => (
             <motion.div
               key={partner.id}
@@ -56,6 +57,7 @@ const ClientsSection = () => {
             </motion.div>
           ))}
         </div>
+
         
         <motion.div 
           className="mt-16 text-center"
