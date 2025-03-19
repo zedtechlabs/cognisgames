@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import GameCard, { Game } from './game-card';
 import numberRushLogo from '../assets/number_rush_cognisgames.webp';
 import HistoryHeroesImage from '../assets/HistoryHeroes_CognisGames.webp';
+import ScienceExplorers from '../assets/ScienceExplorers.webp';
 
 
 const gamesData: Game[] = [
@@ -12,35 +13,41 @@ const gamesData: Game[] = [
     description: 'Challenge your brain with a fast-paced number game',
     imageUrl: numberRushLogo,  // Replacing Unsplash URL with local image
     ageRange: 'Ages 7+',
-    isNew: true
+    isNew: true,
+    actionType: 'demo', 
+    demoLink: 'https://preview--number-jumpers.lovable.app/'
   },
   {
     id: '2',
     title: 'HistoryHeroes',
     description: 'Travel through time to meet historical figures and participate in pivotal moments from the past.',
     imageUrl: HistoryHeroesImage,
-    ageRange: 'Ages 12+'
+    ageRange: 'Ages 12+',
+    actionType: 'waitlist'
   },
   {
     id: '3',
     title: 'ScienceExplorers',
     description: 'Build experiments, conduct research, and discover scientific principles in this interactive laboratory.',
-    imageUrl: 'https://images.unsplash.com/photo-1544376798-76ad6cac0e38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    ageRange: 'Ages 8-13'
+    imageUrl: ScienceExplorers,
+    ageRange: 'Ages 10+',
+    actionType: 'waitlist'
   },
   {
     id: '4',
     title: 'LanguageLegends',
     description: 'Master new languages through storytelling and adventure in this immersive linguistic journey.',
     imageUrl: 'https://images.unsplash.com/photo-1516641396056-0ce60a85d49f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    ageRange: 'Ages 7-15'
+    ageRange: 'Ages 7-15',
+    actionType: 'waitlist'
   },
   {
     id: '5',
     title: 'CodingCrusaders',
     description: 'Learn programming concepts through puzzle-solving and building your own virtual world.',
     imageUrl: 'https://images.unsplash.com/photo-1553481187-be93c21490a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    ageRange: 'Ages 12-18'
+    ageRange: 'Ages 12-18',
+    actionType: 'waitlist'
   },
   {
     id: '6',
@@ -48,7 +55,8 @@ const gamesData: Game[] = [
     description: 'Protect virtual ecosystems and learn about environmental science in this strategy-based game.',
     imageUrl: 'https://images.unsplash.com/photo-1619504413895-d5992b8c95d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     ageRange: 'Ages 9-14',
-    isPopular: true
+    isPopular: false,
+    actionType: 'waitlist'
   }
 ];
 
