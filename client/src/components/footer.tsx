@@ -103,7 +103,7 @@ const Footer = () => {
             <h3 className="orbitron text-lg font-bold text-white mb-6">Our Games</h3>
             <ul className="space-y-3">
               {[
-                'MathQuest', 
+                'Number Rush', 
                 'HistoryHeroes', 
                 'ScienceExplorers', 
                 'LanguageLegends', 

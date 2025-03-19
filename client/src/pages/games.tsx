@@ -8,52 +8,66 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import GameController from '@/components/game-controller';
+import numberRushLogo from '../assets/number_rush_cognisgames.webp';
+import HistoryHeroesImage from '../assets/HistoryHeroes_CognisGames.webp';
+import ScienceExplorers from '../assets/ScienceExplorers.webp';
+import LanguageLegends from '../assets/LanguageLegends.webp';
+import CodingCrusaders from '../assets/CodingCrusaders.webp';
+import EcoDefenders from '../assets/EcoDefenders.webp';
+
 
 // Import the games data from games-section
-const allGames: Game[] = [
+const gamesData: Game[] = [
   {
     id: '1',
-    title: 'MathQuest',
-    description: 'A mathematical adventure where players solve equations to progress through an epic fantasy world.',
-    imageUrl: 'https://images.unsplash.com/photo-1600861194942-f883de0dfe96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    ageRange: 'Ages 10-14',
-    isNew: true
+    title: 'Number Rush',
+    description: 'Race against the clock to solve rapid-fire math challenges and sharpen your mental calculation skills.',
+    imageUrl: numberRushLogo,  // Replacing Unsplash URL with local image
+    ageRange: 'Ages 7+',
+    isNew: true,
+    actionType: 'demo', 
+    demoLink: 'https://preview--number-jumpers.lovable.app/'
   },
   {
     id: '2',
     title: 'HistoryHeroes',
     description: 'Travel through time to meet historical figures and participate in pivotal moments from the past.',
-    imageUrl: 'https://images.unsplash.com/photo-1569701813229-33284b643e3c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    ageRange: 'Ages 12-16'
+    imageUrl: HistoryHeroesImage,
+    ageRange: 'Ages 12+',
+    actionType: 'waitlist'
   },
   {
     id: '3',
     title: 'ScienceExplorers',
     description: 'Build experiments, conduct research, and discover scientific principles in this interactive laboratory.',
-    imageUrl: 'https://images.unsplash.com/photo-1544376798-76ad6cac0e38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    ageRange: 'Ages 8-13'
+    imageUrl: ScienceExplorers,
+    ageRange: 'Ages 10+',
+    actionType: 'waitlist'
   },
   {
     id: '4',
     title: 'LanguageLegends',
     description: 'Master new languages through storytelling and adventure in this immersive linguistic journey.',
-    imageUrl: 'https://images.unsplash.com/photo-1516641396056-0ce60a85d49f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    ageRange: 'Ages 7-15'
+    imageUrl: LanguageLegends ,
+    ageRange: 'Ages 7+',
+    actionType: 'waitlist'
   },
   {
     id: '5',
     title: 'CodingCrusaders',
     description: 'Learn programming concepts through puzzle-solving and building your own virtual world.',
-    imageUrl: 'https://images.unsplash.com/photo-1553481187-be93c21490a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    ageRange: 'Ages 12-18'
+    imageUrl: CodingCrusaders,
+    ageRange: 'Ages 12+',
+    actionType: 'waitlist'
   },
   {
     id: '6',
     title: 'EcoDefenders',
     description: 'Protect virtual ecosystems and learn about environmental science in this strategy-based game.',
-    imageUrl: 'https://images.unsplash.com/photo-1619504413895-d5992b8c95d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    ageRange: 'Ages 9-14',
-    isPopular: true
+    imageUrl: EcoDefenders,
+    ageRange: 'Ages 9+',
+    isPopular: false,
+    actionType: 'waitlist'
   },
   {
     id: '7',
@@ -104,9 +118,9 @@ const allGames: Game[] = [
 // Define age ranges for filtering
 const ageRanges = [
   'All Ages',
-  'Ages 6-9',
-  'Ages 10-13',
-  'Ages 14-18'
+  'Ages 7+',
+  'Ages 10+',
+  'Ages 13+'
 ];
 
 // Define subjects for filtering
