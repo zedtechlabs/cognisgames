@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import GameCard, { Game } from './game-card';
 import numberRushLogo from '../assets/number_rush_cognisgames.webp';
+import HistoryHeroesImage from '../assets/HistoryHeroes_CognisGames.webp';
 
 
 const gamesData: Game[] = [
@@ -17,8 +18,8 @@ const gamesData: Game[] = [
     id: '2',
     title: 'HistoryHeroes',
     description: 'Travel through time to meet historical figures and participate in pivotal moments from the past.',
-    imageUrl: 'https://images.unsplash.com/photo-1569701813229-33284b643e3c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    ageRange: 'Ages 12-16'
+    imageUrl: HistoryHeroesImage,
+    ageRange: 'Ages 12+'
   },
   {
     id: '3',
