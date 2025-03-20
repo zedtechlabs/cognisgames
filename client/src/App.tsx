@@ -10,7 +10,10 @@ import { AnimatePresence } from "framer-motion";
 import CustomCursor from "@/components/ui/cursor";
 import AnimatedBackground from "@/components/animated-background";
 import Particles from "@/components/particles";
-import { SpeedInsights } from "@vercel/speed-insights/react"
+import { SpeedInsights } from "@vercel/speed-insights/react";
+
+// ✅ Import the NumberRush page
+import NumberRush from "@/pages/NumberRush";
 
 function Router() {
   // Get current route for AnimatePresence
@@ -22,16 +25,34 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/games" component={Games} />
         <Route path="/career" component={CareerPage} />
+
+        {/* ✅ Add Route for NumberRush */}
+        <Route path="/games/NumberRush" component={NumberRush} />
+
         <Route component={NotFound} />
       </Switch>
     </AnimatePresence>
   );
 }
 
+// ✅ Create NumberRush Page Component
+function NumberRushPage() {
+  return (
+    <div className="h-screen w-screen flex items-center justify-center">
+      <iframe
+        src="/games/NumberRush/index.html"
+        width="100%"
+        height="100%"
+        style={{ border: "none" }}
+      />
+    </div>
+  );
+}
+
 function App() {
   return (
       <QueryClientProvider client={queryClient}>
-      <WouterRouter base="/">  {/* ✅ Add base here */}
+      <WouterRouter base="/">
         <div className="app relative overflow-x-hidden">
           <AnimatedBackground />
           <Particles />
