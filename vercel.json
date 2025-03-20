@@ -7,10 +7,10 @@
         "config": { "distDir": "dist" }
       }
     ],
-    "routes": [
-      { "src": "/games/NumberRush/(.*)", "dest": "/games/NumberRush/dist/$1" },
-      { "src": "/games/(.*)", "dest": "/games/$1" },
-      { "src": "/(.*)", "dest": "/index.html" }
+    "rewrites": [
+      { "source": "/games/(.*)", "destination": "/games/$1" },
+      { "source": "/(.*)", "destination": "/index.html" }
     ]
   }
+  
   
