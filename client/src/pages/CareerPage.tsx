@@ -27,7 +27,7 @@ const opportunities: Opportunity[] = [
 ];
 
 const CareerPage = () => {
-    // State for the Talent Application Form
+    // State for form data
     const [formData, setFormData] = useState({
       fullName: '',
       email: '',
@@ -35,42 +35,73 @@ const CareerPage = () => {
       message: '',
     });
     const [resume, setResume] = useState<File | null>(null);
+    const [error, setError] = useState<string | null>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
   
+    // Handle text input change
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { name, value } = e.target;
       setFormData((prev) => ({ ...prev, [name]: value }));
     };
   
+    // Handle file upload (Resume validation: max 5MB)
     const handleResumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (e.target.files && e.target.files[0]) {
-        setResume(e.target.files[0]);
+        const file = e.target.files[0];
+  
+        // Validate file size (5MB limit)
+        if (file.size > 5 * 1024 * 1024) { // 5MB in bytes
+          setError("File size must be under 5MB.");
+          setResume(null);
+        } else {
+          setError(null);
+          setResume(file);
+        }
       }
     };
   
-    const handleSubmit = (e: React.FormEvent) => {
+    // Handle form submission
+    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
   
-      if (!resume) {
-        alert("Please upload a resume before submitting.");
+      // Validate form fields
+      if (!formData.fullName || !formData.email || !resume) {
+        setError("Please fill all required fields and upload a resume.");
         return;
       }
   
-      const formDataToSend = new FormData();
-      formDataToSend.append("fullName", formData.fullName);
-      formDataToSend.append("email", formData.email);
-      formDataToSend.append("phone", formData.phone);
-      formDataToSend.append("message", formData.message);
-      formDataToSend.append("resume", resume);
-  
-      // TODO: Add API call to submit the form data
-      console.log('Talent Application Submitted:', formDataToSend);
-  
-      alert("Thank you! Your application has been received.");
-  
-      // Clear form fields
-      setFormData({ fullName: "", email: "", phone: "", message: "" });
-      setResume(null);
-    };
+      setIsSubmitting(true);
+      
+        const formDataToSend = new FormData();
+        formDataToSend.append("formType", "talentApplication"); // Helps Make route the data
+        formDataToSend.append("fullName", formData.fullName);
+        formDataToSend.append("email", formData.email);
+        formDataToSend.append("phone", formData.phone);
+        formDataToSend.append("message", formData.message);
+        formDataToSend.append("resume", resume);
+      
+        try {
+          const response = await fetch("https://hook.eu2.make.com/3qgbw4dkn3b651qxt4y77moiau7tbzmq", {
+            method: "POST",
+            body: formDataToSend,  // Send as multipart/form-data
+          });
+      
+          if (response.ok) {
+            alert("Thank you! Your application has been received.");
+            setFormData({ fullName: "", email: "", phone: "", message: "" });
+            setResume(null);
+            setError(null);
+          } else {
+            alert("Error submitting. Please try again.");
+          }
+        } catch (error) {
+            console.error("Submission error:", error);
+            setError("Network error. Please try again later.");
+          } finally {
+            setIsSubmitting(false);
+          }
+        };
+      
   
     return (
       <motion.div
@@ -201,7 +232,7 @@ const CareerPage = () => {
                 </div>
                 {/* Resume Upload */}
                 <div>
-                  <label className="block text-gray-300 mb-2">Upload Resume *</label>
+                  <label className="block text-gray-300 mb-2">Upload Resume (Max: 5MB)*</label>
                   <input
                     type="file"
                     accept=".pdf,.doc,.docx"
