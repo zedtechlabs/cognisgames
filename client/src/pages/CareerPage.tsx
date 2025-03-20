@@ -67,7 +67,7 @@ const CareerPage = () => {
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+  
     // Validate that all fields are filled in
     if (!formData.fullName || !formData.email || !formData.phone || !formData.message || !resume) {
       setError("Please fill all required fields and upload a resume.");
@@ -78,33 +78,59 @@ const CareerPage = () => {
       });
       return;
     }
-
+  
+    // Validate file size (Max: 5MB)
+    if (resume.size > 5 * 1024 * 1024) {
+      setError("File size must be under 5MB.");
+      toast({
+        title: "File Too Large",
+        description: "Resume file size must be under 5MB.",
+        variant: "destructive",
+      });
+      return;
+    }
+  
     setIsSubmitting(true);
-
-    // Build FormData to send via fetch (supports file upload)
-    const formDataToSend = new FormData();
-    formDataToSend.append("formType", "talentApplication"); // Helps Make route the data correctly
-    formDataToSend.append("fullName", formData.fullName);
-    formDataToSend.append("email", formData.email);
-    formDataToSend.append("phone", formData.phone);
-    formDataToSend.append("message", formData.message);
-    formDataToSend.append("resume", resume);
-
+    setError(null);
+  
     try {
-      const response = await fetch("https://hook.eu2.make.com/3plk690gtufamdqaevwh686h27tzk2u7", {
+      // ✅ Step 1: Upload Resume to Cloudinary
+      const cloudinaryFormData = new FormData();
+      cloudinaryFormData.append("file", resume);
+      cloudinaryFormData.append("upload_preset", "talent-resumes"); // Replace with actual Cloudinary Upload Preset
+  
+      const cloudinaryResponse = await fetch("https://api.cloudinary.com/v1_1/dnv7zt6lv/image/upload", { 
+        method: "POST",
+        body: cloudinaryFormData,
+      });
+  
+      if (!cloudinaryResponse.ok) throw new Error("Failed to upload resume.");
+  
+      const cloudinaryData = await cloudinaryResponse.json();
+      const resumeUrl = cloudinaryData.secure_url; // ✅ Resume Cloudinary Link
+  
+      // ✅ Step 2: Send Form Data + Resume URL to Make.com Webhook
+      const formDataToSend = new FormData();
+      formDataToSend.append("formType", "talentApplication"); // Helps Make route the data correctly
+      formDataToSend.append("fullName", formData.fullName);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("phone", formData.phone);
+      formDataToSend.append("message", formData.message);
+      formDataToSend.append("resume", resumeUrl); // Send Cloudinary resume link
+  
+      const response = await fetch("https://hook.eu2.make.com/your-make-webhook-url", {
         method: "POST",
         body: formDataToSend,
       });
-
+  
       if (response.ok) {
         toast({
           title: "Submitted",
           description: "Thank you! Your application has been received.",
         });
-        // Clear form fields and file
+        // ✅ Clear form fields and file
         setFormData({ fullName: "", email: "", phone: "", message: "" });
         setResume(null);
-        setError(null);
       } else {
         toast({
           title: "Submission Error",
@@ -124,6 +150,7 @@ const CareerPage = () => {
       setIsSubmitting(false);
     }
   };
+  
 
   return (
     <motion.div
