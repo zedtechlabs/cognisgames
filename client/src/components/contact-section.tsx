@@ -33,14 +33,24 @@ const ContactSection = () => {
   
   const onSubmit = async (data: ContactFormValues) => {
     try {
-      await apiRequest('POST', '/api/contact', data);
-      
-      toast({
-        title: "Message sent!",
-        description: "We'll get back to you as soon as possible.",
+      const response = await fetch("https://hook.eu2.make.com/k5mun46qsu7ndgu23bd15gdz8d7hb659", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data),
       });
-      
-      reset();
+  
+      if (response.ok) {
+        toast({
+          title: "Message sent!",
+          description: "We'll get back to you as soon as possible.",
+        });
+  
+        reset();
+      } else {
+        throw new Error("Failed to send message");
+      }
     } catch (error) {
       toast({
         title: "Error",
@@ -49,6 +59,7 @@ const ContactSection = () => {
       });
     }
   };
+  
   
   return (
     <section id="contact" className="py-20 bg-card/50 relative">
