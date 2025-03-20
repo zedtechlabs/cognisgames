@@ -1,9 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import themePlugin from "@replit/vite-plugin-shadcn-theme-json";
+import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
-import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
+import history from "connect-history-api-fallback";
 
 // Needed for ESM modules
 const __filename = fileURLToPath(import.meta.url);
@@ -25,16 +26,16 @@ export default defineConfig(async () => {
   }
 
   return {
-    // 1) Tell Vite your source code is in "client/"
+    // 1) Source code in "client/"
     root: path.resolve(__dirname, "client"),
 
-    // 2) Put the final build in "<repo-root>/dist"
+    // 2) Build output in "<repo-root>/dist"
     build: {
-      outDir: path.resolve(__dirname, "dist"), // dist at repo root
+      outDir: path.resolve(__dirname, "dist"),
       emptyOutDir: true,
     },
 
-    // 3) Set up your aliases as needed
+    // 3) Aliases
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "client", "src"),
@@ -42,6 +43,21 @@ export default defineConfig(async () => {
       },
     },
 
+    // 4) Plugins
     plugins,
+
+    // 5) Enable custom middleware for SPA fallback
+    server: {
+      middlewareMode: true, // or 'ssr'
+      configureServer: (server) => {
+        // Use connect-history-api-fallback to handle /games, /anything routes
+        server.middlewares.use(
+          history({
+            // Options if needed, e.g.:
+            // verbose: true
+          })
+        );
+      },
+    },
   };
 });
