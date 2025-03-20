@@ -81,7 +81,7 @@ const CareerPage = () => {
         formDataToSend.append("resume", resume);
       
         try {
-          const response = await fetch("https://hook.eu2.make.com/3qgbw4dkn3b651qxt4y77moiau7tbzmq", {
+          const response = await fetch("https://hook.eu2.make.com/3plk690gtufamdqaevwh686h27tzk2u7", {
             method: "POST",
             body: formDataToSend,  // Send as multipart/form-data
           });
@@ -183,77 +183,81 @@ const CareerPage = () => {
               <h2 className="orbitron text-2xl font-bold text-white mb-4">
                 Talent Application Form
               </h2>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-gray-300 mb-2">Full Name *</label>
-                  <Input
-                    type="text"
-                    name="fullName"
-                    required
-                    placeholder="Your full name"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    className="bg-background border-primary/30 focus:border-primary"
-                  />
-                </div>
-                <div>
-                  <label className="block text-gray-300 mb-2">Email Address *</label>
-                  <Input
-                    type="email"
-                    name="email"
-                    required
-                    placeholder="Your email address"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="bg-background border-primary/30 focus:border-primary"
-                  />
-                </div>
-                <div>
-                  <label className="block text-gray-300 mb-2">Phone Number</label>
-                  <Input
-                    type="tel"
-                    name="phone"
-                    placeholder="Your phone number (optional)"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="bg-background border-primary/30 focus:border-primary"
-                  />
-                </div>
-                <div>
-                  <label className="block text-gray-300 mb-2">Message / Cover Letter</label>
-                  <textarea
-                    name="message"
-                    placeholder="Tell us about yourself and your experience..."
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full bg-background border border-primary/30 rounded-lg px-4 py-2 text-white focus:border-primary"
-                    rows={4}
-                  />
-                </div>
-                {/* Resume Upload */}
-                <div>
-                  <label className="block text-gray-300 mb-2">Upload Resume (Max: 5MB)*</label>
-                  <input
-                    type="file"
-                    accept=".pdf,.doc,.docx"
-                    required
-                    className="w-full bg-background border border-primary/30 rounded-lg px-4 py-2 text-white focus:border-primary cursor-pointer"
-                    onChange={handleResumeChange}
-                  />
-                  {resume && <p className="text-gray-400 text-sm mt-1">{resume.name}</p>}
-                </div>
-  
-                <Button
-                  type="submit"
-                  className="w-full bg-primary hover:bg-primary/90 text-background font-medium py-3 rounded-lg transition-colors"
-                >
-                  Submit Application
-                </Button>
-              </form>
+              {error && <p className="text-red-500 mb-4">{error}</p>}
+      
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                    <label className="block text-gray-300 mb-2">Full Name *</label>
+                    <input
+                        type="text"
+                        name="fullName"
+                        required
+                        placeholder="Your full name"
+                        value={formData.fullName}
+                        onChange={handleChange}
+                        className="w-full bg-background border border-primary/30 rounded-lg px-4 py-2 text-white"
+                    />
+                    </div>
+
+                    <div>
+                    <label className="block text-gray-300 mb-2">Email Address *</label>
+                    <input
+                        type="email"
+                        name="email"
+                        required
+                        placeholder="Your email address"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="w-full bg-background border border-primary/30 rounded-lg px-4 py-2 text-white"
+                    />
+                    </div>
+
+                    <div>
+                    <label className="block text-gray-300 mb-2">Phone Number</label>
+                    <input
+                        type="tel"
+                        name="phone"
+                        placeholder="Your phone number (optional)"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className="w-full bg-background border border-primary/30 rounded-lg px-4 py-2 text-white"
+                    />
+                    </div>
+
+                    <div>
+                    <label className="block text-gray-300 mb-2">Message / Cover Letter</label>
+                    <textarea
+                        name="message"
+                        placeholder="Tell us about yourself and your experience..."
+                        value={formData.message}
+                        onChange={handleChange}
+                        className="w-full bg-background border border-primary/30 rounded-lg px-4 py-2 text-white"
+                        rows={4}
+                    />
+                    </div>
+
+                    <div>
+                    <label className="block text-gray-300 mb-2">Upload Resume (Max: 5MB) *</label>
+                    <input
+                        type="file"
+                        accept=".pdf,.doc,.docx"
+                        onChange={handleResumeChange}
+                        className="w-full bg-background border border-primary/30 rounded-lg px-4 py-2 text-white"
+                    />
+                    {resume && <p className="text-green-500 mt-2">Uploaded: {resume.name}</p>}
+                    </div>
+
+                    <button
+                    type="submit"
+                    className="w-full bg-primary hover:bg-primary/90 text-background font-medium py-3 rounded-lg transition-all"
+                    disabled={isSubmitting}
+                    >
+                    {isSubmitting ? "Submitting..." : "Submit Application"}
+                    </button>
+                </form>
             </motion.div>
           </div>
         </section>
-        
         <Footer />
       </motion.div>
     );
