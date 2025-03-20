@@ -2,15 +2,14 @@
     "version": 2,
     "builds": [
       {
-        "src": "package.json",
+        "src": "games/NumberRush/package.json",
         "use": "@vercel/static-build",
-        "config": { "distDir": "dist" }
+        "config": { "distDir": "games/NumberRush/dist" }
       }
     ],
-    "rewrites": [
-      { "source": "/games/(.*)", "destination": "/games/$1" },
-      { "source": "/(.*)", "destination": "/index.html" }
+    "routes": [
+      { "src": "/games/NumberRush/(.*)", "dest": "/games/NumberRush/dist/$1" },
+      { "src": "/(.*)", "dest": "/index.html" }
     ]
   }
-  
   
