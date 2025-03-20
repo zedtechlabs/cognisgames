@@ -5,11 +5,11 @@ import Logo from './logo';
 import MobileMenu from './mobile-menu';
 
 const links = [
-  { href: '#home', label: 'HOME' },
-  { href: '#games', label: 'GAMES' },
-  { href: '#services', label: 'SERVICES' },
-  { href: '#clients', label: 'CLIENTS' },
-  { href: '#contact', label: 'CONTACT' }
+  { href: '/#home', label: 'HOME' },
+  { href: '/#games', label: 'GAMES' },
+  { href: '/#services', label: 'SERVICES' },
+  { href: '/#clients', label: 'CLIENTS' },
+  { href: '/#contact', label: 'CONTACT' }
 ];
 
 const Navbar = () => {
