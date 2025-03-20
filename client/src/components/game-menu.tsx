@@ -8,7 +8,7 @@ interface GameMenuItem {
 }
 
 const games: GameMenuItem[] = [
-  { id: '1', title: 'MathQuest', icon: 'fa-calculator', href: '#' },
+  { id: '1', title: 'Number Rush', icon: 'fa-calculator', href: '#' },
   { id: '2', title: 'HistoryHeroes', icon: 'fa-landmark', href: '#' },
   { id: '3', title: 'ScienceExp', icon: 'fa-flask', href: '#' },
   { id: '4', title: 'LangLegends', icon: 'fa-language', href: '#' },
