@@ -19,7 +19,7 @@ const Footer = () => {
     try {
       emailSchema.parse(email); // Validate email using Zod
   
-      const response = await fetch("https://script.google.com/macros/s/AKfycbwIKpR_do_LSVSmPkhSdSS7H4z5I-BS5lZJvcYMAfKJ59BPiC4VqAcoRvalab10ig8XPQ/exec", {
+      const response = await fetch("https://hook.eu2.make.com/3qgbw4dkn3b651qxt4y77moiau7tbzmq", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         mode: "no-cors", 
