@@ -4,6 +4,7 @@ import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import Home from "@/pages/home";
 import Games from "@/pages/games";
+import CareerPage from "@/pages/CareerPage"; 
 import NotFound from "@/pages/not-found";
 import { AnimatePresence } from "framer-motion";
 import CustomCursor from "@/components/ui/cursor";
@@ -20,6 +21,7 @@ function Router() {
       <Switch key={location}>
         <Route path="/" component={Home} />
         <Route path="/games" component={Games} />
+        <Route path="/career" component={CareerPage} />
         <Route component={NotFound} />
       </Switch>
     </AnimatePresence>
