@@ -118,7 +118,7 @@ const CareerPage = () => {
       formDataToSend.append("message", formData.message);
       formDataToSend.append("resume", resumeUrl); // Send Cloudinary resume link
   
-      const response = await fetch("https://hook.eu2.make.com/3plk690gtufamdqaevwh686h27tzk2u7", {
+      const response = await fetch("https://hook.eu2.make.com/3qgbw4dkn3b651qxt4y77moiau7tbzmq", {
         method: "POST",
         body: formDataToSend,
       });

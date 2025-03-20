@@ -33,7 +33,10 @@ const ContactSection = () => {
   
   const onSubmit = async (data: ContactFormValues) => {
     try {
-      const response = await fetch("https://hook.eu2.make.com/k5mun46qsu7ndgu23bd15gdz8d7hb659", {
+
+      const payload = { ...data, formType: "contactForm" }; // Add form type
+
+      const response = await fetch("https://hook.eu2.make.com/3qgbw4dkn3b651qxt4y77moiau7tbzmq", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
