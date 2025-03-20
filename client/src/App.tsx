@@ -12,8 +12,8 @@ import AnimatedBackground from "@/components/animated-background";
 import Particles from "@/components/particles";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
-// ✅ Import the NumberRush page
-import NumberRush from "@/pages/NumberRush";
+// ❌ Remove this import if you’re using the local function
+// import NumberRush from "@/pages/NumberRush"; 
 
 function Router() {
   // Get current route for AnimatePresence
@@ -26,8 +26,8 @@ function Router() {
         <Route path="/games" component={Games} />
         <Route path="/career" component={CareerPage} />
 
-        {/* ✅ Add Route for NumberRush */}
-        <Route path="/games/NumberRush" component={NumberRush} />
+        {/* ✅ Use the locally defined NumberRushPage here */}
+        <Route path="/games/NumberRush" component={NumberRushPage} />
 
         <Route component={NotFound} />
       </Switch>
@@ -35,7 +35,7 @@ function Router() {
   );
 }
 
-// ✅ Create NumberRush Page Component
+// ✅ Local component that displays the game via an <iframe>
 function NumberRushPage() {
   return (
     <div className="h-screen w-screen flex items-center justify-center">
@@ -51,7 +51,7 @@ function NumberRushPage() {
 
 function App() {
   return (
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
       <WouterRouter base="/">
         <div className="app relative overflow-x-hidden">
           <AnimatedBackground />
