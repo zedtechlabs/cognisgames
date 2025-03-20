@@ -139,7 +139,7 @@ const subjects = [
 
 const GamesPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredGames, setFilteredGames] = useState<Game[]>(allGames);
+  const [filteredGames, setFilteredGames] = useState<Game[]>(gamesData);
   const [selectedAgeRange, setSelectedAgeRange] = useState('All Ages');
   const [selectedSubject, setSelectedSubject] = useState('All Subjects');
   const [showNew, setShowNew] = useState(false);
@@ -171,7 +171,7 @@ const GamesPage = () => {
 
   // Filter games based on search term and filters
   useEffect(() => {
-    let result = allGames;
+    let result = gamesData;
     
     // Filter by search term
     if (searchTerm) {
