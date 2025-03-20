@@ -1,0 +1,269 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 45 100% 96%;
+    --foreground: 36 30% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 36 30% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 36 30% 20%;
+
+    --primary: 38 92% 50%;
+    --primary-foreground: 36 30% 20%;
+
+    --secondary: 45 100% 60%;
+    --secondary-foreground: 36 30% 20%;
+
+    --muted: 45 10% 90%;
+    --muted-foreground: 36 15% 45%;
+
+    --accent: 36 100% 50%;
+    --accent-foreground: 36 30% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 45 30% 85%;
+    --input: 45 30% 85%;
+    --ring: 38 92% 50%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 45 10% 96%;
+    --sidebar-foreground: 36 5.3% 26.1%;
+    --sidebar-primary: 36 5.9% 10%;
+    --sidebar-primary-foreground: 45 10% 96%;
+    --sidebar-accent: 45 4.8% 90%;
+    --sidebar-accent-foreground: 36 5.9% 10%;
+    --sidebar-border: 45 13% 80%;
+    --sidebar-ring: 38 92% 50%;
+  }
+
+  .dark {
+    --background: 36 30% 8%;
+    --foreground: 45 10% 90%;
+
+    --card: 36 30% 8%;
+    --card-foreground: 45 10% 90%;
+
+    --popover: 36 30% 8%;
+    --popover-foreground: 45 10% 90%;
+
+    --primary: 38 92% 50%;
+    --primary-foreground: 36 30% 8%;
+
+    --secondary: 45 100% 60%;
+    --secondary-foreground: 36 30% 8%;
+
+    --muted: 36 15% 18%;
+    --muted-foreground: 45 10% 65%;
+
+    --accent: 36 100% 50%;
+    --accent-foreground: 36 30% 8%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 45 10% 90%;
+
+    --border: 36 15% 18%;
+    --input: 36 15% 18%;
+    --ring: 38 92% 50%;
+    
+    --sidebar-background: 36 15% 10%;
+    --sidebar-foreground: 45 10% 90%;
+    --sidebar-primary: 38 92% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 36 15% 18%;
+    --sidebar-accent-foreground: 45 10% 90%;
+    --sidebar-border: 36 15% 18%;
+    --sidebar-ring: 38 92% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-amber-50/70 backdrop-blur-sm border border-amber-200/50 shadow-glass z-10;
+  }
+  
+  .game-button {
+    @apply px-6 py-3 rounded-xl font-medium transition-all duration-300 shadow-button hover:shadow-hover active:scale-95 z-10;
+  }
+  
+  .number-display {
+    @apply text-7xl font-bold tracking-tight z-10;
+  }
+  
+  .answer-option {
+    @apply rounded-2xl py-4 px-6 font-semibold text-lg transition-all duration-300 hover:shadow-hover active:scale-95 z-10;
+  }
+  
+  .game-card {
+    @apply rounded-3xl shadow-card bg-white p-6 transition-all duration-300 z-10;
+  }
+  
+  .chip {
+    @apply px-3 py-1 rounded-full text-xs font-medium z-10;
+  }
+}
+
+.number-animation-enter {
+  animation: number-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.number-animation-exit {
+  animation: number-out 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.background-animate {
+  background-size: 400%;
+  animation: gradientBackground 15s ease infinite;
+}
+
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes number-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes number-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.8);
+  }
+}
+
+/* Gold mining animation */
+.mining {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, rgba(255,215,0,1) 0%, rgba(255,215,0,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10;
+  animation: mine 2s ease-out infinite;
+}
+
+@keyframes mine {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* Floating gold number animations */
+.floating-number {
+  position: absolute;
+  color: rgba(255, 215, 0, 0.7);
+  font-weight: bold;
+  font-size: 1.2rem;
+  pointer-events: none;
+  animation: float-up 4s ease-out forwards;
+  z-index: 1;
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100px) rotate(10deg);
+    opacity: 0;
+  }
+}
+
+/* Custom scroll bar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Add floating animation */
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+/* Pulse scale animation */
+.animate-pulse-scale {
+  animation: pulse-scale 2s ease-in-out infinite;
+}
+
+@keyframes pulse-scale {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
