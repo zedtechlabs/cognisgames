@@ -25,7 +25,17 @@ const CognisLogo = () => {
           </span>
           <span className="text-white">GAMES</span>
         </h1>
-        <p className="text-xs text-gray-400">by Zed Tech Lab</p>
+        <p className="text-xs text-gray-400">
+          by 
+          <a 
+            href="https://www.zedtechlab.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-gray-400 hover:text-gray-400 no-underline"
+          >
+            Zed Tech Lab
+        </a>
+      </p>
       </div>
     </div>
   );
