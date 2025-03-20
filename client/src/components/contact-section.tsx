@@ -132,10 +132,10 @@ const ContactSection = () => {
                   {...register('subject')}
                 >
                   <option value="">Select a subject</option>
-                  <option value="custom_game">Custom Game Development</option>
-                  <option value="existing_games">Questions about Existing Games</option>
-                  <option value="partnership">Partnership Opportunities</option>
-                  <option value="other">Other</option>
+                  <option value="Custom_Game">Custom Game Development</option>
+                  <option value="Existing_Games">Questions about Existing Games</option>
+                  <option value="Partnership">Partnership Opportunities</option>
+                  <option value="Other">Other</option>
                 </select>
                 {errors.subject && (
                   <p className="text-destructive text-xs mt-1">{errors.subject.message}</p>

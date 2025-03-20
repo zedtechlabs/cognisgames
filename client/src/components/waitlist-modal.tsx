@@ -43,11 +43,19 @@ const WaitlistModal = ({ isOpen, onClose, gameName }: WaitlistModalProps) => {
     setIsSubmitting(true);
     setError(null);
 
+    const formattedInterests = Object.keys(formData.interests)
+    .filter((key) => formData.interests[key as keyof typeof formData.interests])
+    .join(", ");
+  
     const payload = {
       formType: "waitlistForm",
-      gameName, // Automatically include game name
-      ...formData,
+      gameName,
+      email: formData.email,
+      fullName: formData.fullName,
+      ageGroup: formData.ageGroup,
+      interests: formattedInterests, // Converts interests to string format
     };
+  
 
     try {
       const response = await fetch("https://hook.eu2.make.com/3qgbw4dkn3b651qxt4y77moiau7tbzmq", {
