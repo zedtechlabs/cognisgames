@@ -74,16 +74,16 @@ const GameCard = ({ game, index }: GameCardProps) => {
             </motion.button>
           ) : (
             // For demo games (like Number Rush), open the demo link in a new tab.
-            <motion.a 
-              href={game.demoLink} // Ensure this is set to your static game path (e.g., '/games/NumberRush')
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-glow text-sm bg-green-500 hover:bg-green-600 text-background px-4 py-2 rounded-lg font-medium"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Try Demo
-            </motion.a>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <a 
+                href={game.demoLink} // ✅ Make sure this is the correct external link
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-glow text-sm bg-green-500 hover:bg-green-600 text-background px-4 py-2 rounded-lg font-medium"
+              >
+                Try Demo
+              </a>
+            </motion.div>
           )}
 
           {/* Waitlist Modal (Only Opens for 'Join Waitlist' Games) */}
