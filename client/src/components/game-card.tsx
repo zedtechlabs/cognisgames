@@ -58,7 +58,9 @@ const GameCard = ({ game, index }: GameCardProps) => {
         <h3 className="orbitron text-xl font-bold text-white mb-2">{game.title}</h3>
         <p className="text-gray-400 text-sm mb-4">{game.description}</p>
         <div className="flex items-center justify-between">
-          <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded">{game.ageRange}</span>
+          <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded">
+            {game.ageRange}
+          </span>
           
           {/* Conditional Button: Either Join Waitlist or Try Demo */}
           {game.actionType === 'waitlist' ? (
@@ -66,13 +68,14 @@ const GameCard = ({ game, index }: GameCardProps) => {
               className="btn-glow text-sm bg-primary hover:bg-primary/90 text-background px-4 py-2 rounded-lg font-medium"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => setShowWaitlist(true)} // Opens Waitlist Form
+              onClick={() => setShowWaitlist(true)}
             >
               Join Waitlist
             </motion.button>
           ) : (
+            // For demo games (like Number Rush), open the demo link in a new tab.
             <motion.a 
-              href={game.demoLink} // Redirects to demo
+              href={game.demoLink} // Ensure this is set to your static game path (e.g., '/games/NumberRush')
               target="_blank"
               rel="noopener noreferrer"
               className="btn-glow text-sm bg-green-500 hover:bg-green-600 text-background px-4 py-2 rounded-lg font-medium"

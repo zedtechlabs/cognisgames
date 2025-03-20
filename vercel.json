@@ -7,18 +7,9 @@
       "config": { "distDir": "dist" }
     }
   ],
-  "rewrites": [
-    {
-      "source": "/games/NumberRush",
-      "destination": "/games/NumberRush/index.html"
-    },
-    {
-      "source": "/games/(.*)",
-      "destination": "/games/$1"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+  "routes": [
+    { "source": "/games/NumberRush", "destination": "/games/NumberRush/index.html" },
+    { "source": "/games/NumberRush/(.*)", "destination": "/games/NumberRush/$1" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
