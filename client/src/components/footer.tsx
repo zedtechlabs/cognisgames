@@ -21,8 +21,7 @@ const Footer = () => {
   
       const response = await fetch("https://hook.eu2.make.com/3qgbw4dkn3b651qxt4y77moiau7tbzmq", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        mode: "no-cors", 
+        headers: { "Content-Type": "application/json" }, 
         body: JSON.stringify({
           formType: "newsletter", // ✅ Identify this as a newsletter submission
           email: email,
