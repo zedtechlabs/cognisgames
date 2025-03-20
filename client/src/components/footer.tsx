@@ -14,38 +14,55 @@ const Footer = () => {
   
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+    setIsSubmitting(true);
+  
     try {
-      emailSchema.parse(email);
-      setIsSubmitting(true);
-      
-      // Simulated API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast({
-        title: "Subscribed!",
-        description: "Thank you for subscribing to our newsletter.",
+      emailSchema.parse(email); // Validate email using Zod
+  
+      const response = await fetch("https://script.google.com/macros/s/AKfycbweJT-DAWZiv_5fMV0DRfJYriPXe0zivcKD-WnnwbALOQiNepZ8jbfcKWFTTXatzwz5KA/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "newsletter", // ✅ Identify this as a newsletter submission
+          email: email,
+        }),
       });
-      
-      setEmail('');
+  
+      const result = await response.text();
+      console.log(result); // Log the response from Google Apps Script
+  
+      if (response.ok) {
+        toast({
+          title: "Subscribed!",
+          description: "Thank you for subscribing to our newsletter.",
+        });
+        setEmail(''); // Clear input after successful submission
+      } else {
+        toast({
+          title: "Error",
+          description: "Something went wrong. Please try again.",
+          variant: "destructive",
+        });
+      }
     } catch (error) {
       if (error instanceof z.ZodError) {
         toast({
           title: "Invalid email",
           description: "Please enter a valid email address.",
-          variant: "destructive"
+          variant: "destructive",
         });
       } else {
         toast({
           title: "Error",
           description: "There was a problem subscribing. Please try again.",
-          variant: "destructive"
+          variant: "destructive",
         });
       }
     } finally {
       setIsSubmitting(false);
     }
   };
+  
   
   return (
     <footer className="bg-card pt-16 pb-8 border-t border-primary/20">
