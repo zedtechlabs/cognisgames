@@ -5,6 +5,9 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useToast } from '@/hooks/use-toast';
 import { apiRequest } from '@/lib/queryClient';
+import { Link } from "wouter";
+import CareerTeam from '../assets/Careers_CognisGames.webp';
+
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
@@ -230,7 +233,7 @@ const ContactSection = () => {
             
             <div className="bg-background border border-primary/30 rounded-xl overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                src={CareerTeam}
                 alt="Our team" 
                 className="w-full h-64 object-cover"
               />
@@ -239,13 +242,14 @@ const ContactSection = () => {
                 <p className="text-gray-400 mb-4">
                   We're always looking for talented developers, educational specialists, and game designers.
                 </p>
-                <motion.a 
-                  href="#" 
-                  className="inline-block text-primary hover:underline"
-                  whileHover={{ x: 5 }}
-                >
-                  View Career Opportunities <i className="fas fa-arrow-right ml-1"></i>
-                </motion.a>
+                <Link href="/career">
+                  <motion.a 
+                    className="inline-block text-primary hover:underline"
+                    whileHover={{ x: 5 }}
+                  >
+                    View Career Opportunities <i className="fas fa-arrow-right ml-1"></i>
+                  </motion.a>
+                </Link>
               </div>
             </div>
           </motion.div>

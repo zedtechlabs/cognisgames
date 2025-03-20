@@ -68,19 +68,20 @@ const gamesData: Game[] = [
     ageRange: 'Ages 9+',
     isPopular: false,
     actionType: 'waitlist'
-  },
+  }
+  /*
   {
     id: '7',
     title: 'GeometryJumpers',
     description: 'Master geometric concepts through an exciting platformer game with increasingly complex challenges.',
-    imageUrl: 'https://images.unsplash.com/photo-1633412802994-5c058f151b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    imageUrl: ,
     ageRange: 'Ages 8-12'
   },
   {
     id: '8',
     title: 'ChemistryClash',
     description: 'Mix elements, create compounds, and solve puzzles in this chemistry-based strategy game.',
-    imageUrl: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    imageUrl: ,
     ageRange: 'Ages 13-17',
     isPopular: true
   },
@@ -91,28 +92,21 @@ const gamesData: Game[] = [
     imageUrl: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     ageRange: 'Ages 7-16'
   },
+  
   {
     id: '10',
-    title: 'MusicMakers',
-    description: 'Learn music theory, composition, and rhythm through interactive challenges and creative play.',
-    imageUrl: 'https://images.unsplash.com/photo-1507838153414-b4b713384a76?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    ageRange: 'Ages 6-15',
-    isNew: true
-  },
-  {
-    id: '11',
     title: 'PhysicsPhenom',
     description: 'Manipulate gravity, friction, and momentum to solve physics-based puzzles and challenges.',
     imageUrl: 'https://images.unsplash.com/photo-1635070041409-e63e783ce3c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     ageRange: 'Ages 11-18'
   },
   {
-    id: '12',
+    id: '11',
     title: 'LiteraryQuests',
     description: 'Journey through famous works of literature while developing reading comprehension and literary analysis skills.',
     imageUrl: 'https://images.unsplash.com/photo-1463320726281-696a485928c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     ageRange: 'Ages 10-17'
-  }
+  } */
 ];
 
 // Define age ranges for filtering
@@ -183,15 +177,17 @@ const GamesPage = () => {
     
     // Filter by age range
     if (selectedAgeRange !== 'All Ages') {
-      const minAge = parseInt(selectedAgeRange.split('-')[0].replace('Ages ', ''));
-      const maxAge = parseInt(selectedAgeRange.split('-')[1]);
-      
+      // Extract numeric values from selected age range
+      const selectedMinAge = parseInt(selectedAgeRange.replace(/\D/g, ''), 10);
+      const selectedMaxAge = selectedAgeRange.includes('+') ? Infinity : parseInt(selectedAgeRange.split('-')[1]);
+
       result = result.filter(game => {
-        const gameMinAge = parseInt(game.ageRange.split('-')[0].replace('Ages ', ''));
-        const gameMaxAge = parseInt(game.ageRange.split('-')[1]);
-        
-        return (gameMinAge <= maxAge && gameMaxAge >= minAge);
+        const gameMinAge = parseInt(game.ageRange.replace(/\D/g, ''), 10);
+        const gameMaxAge = game.ageRange.includes('+') ? Infinity : parseInt(game.ageRange.split('-')[1]);
+
+        return gameMinAge <= selectedMaxAge && gameMaxAge >= selectedMinAge;
       });
+
     }
     
     // Filter by subject
