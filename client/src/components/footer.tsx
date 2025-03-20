@@ -19,7 +19,7 @@ const Footer = () => {
     try {
       emailSchema.parse(email); // Validate email using Zod
   
-      const response = await fetch("https://script.google.com/macros/s/AKfycbweJT-DAWZiv_5fMV0DRfJYriPXe0zivcKD-WnnwbALOQiNepZ8jbfcKWFTTXatzwz5KA/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbwIKpR_do_LSVSmPkhSdSS7H4z5I-BS5lZJvcYMAfKJ59BPiC4VqAcoRvalab10ig8XPQ/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
