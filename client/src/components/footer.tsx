@@ -22,6 +22,7 @@ const Footer = () => {
       const response = await fetch("https://script.google.com/macros/s/AKfycbwIKpR_do_LSVSmPkhSdSS7H4z5I-BS5lZJvcYMAfKJ59BPiC4VqAcoRvalab10ig8XPQ/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        mode: "no-cors", 
         body: JSON.stringify({
           formType: "newsletter", // ✅ Identify this as a newsletter submission
           email: email,
