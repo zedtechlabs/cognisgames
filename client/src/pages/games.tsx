@@ -26,7 +26,7 @@ const gamesData: Game[] = [
     ageRange: 'Ages 7+',
     isNew: true,
     actionType: 'demo', 
-    demoLink: 'https://preview--number-jumpers.lovable.app/'
+    demoLink: 'https://numberrush.cognisgames.com/'
   },
   {
     id: '2',
